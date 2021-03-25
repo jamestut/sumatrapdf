@@ -211,10 +211,9 @@ static void updateTocItemsPageNo(TocItem* ti, int nPageNoAdd, bool root) {
     }
     auto curr = ti;
     while (curr) {
-        if (IsPageNavigationDestination(curr->dest)) {
+        if (curr->dest)
             curr->dest->pageNo += nPageNoAdd;
-            curr->pageNo += nPageNoAdd;
-        }
+        curr->pageNo += nPageNoAdd;
 
         updateTocItemsPageNo(curr->child, nPageNoAdd, false);
         if (root) {
@@ -230,12 +229,7 @@ TocTree* EngineMulti::GetToc() {
 }
 
 WCHAR* EngineMulti::GetPageLabel(int pageNo) const {
-    if (pageNo < 1 || pageNo >= pageCount) {
-        return nullptr;
-    }
-
-    EngineBase* e = PageToEngine(pageNo);
-    return e->GetPageLabel(pageNo);
+    return str::Format(L"%d", pageNo);
 }
 
 int EngineMulti::GetPageByLabel(const WCHAR* label) const {

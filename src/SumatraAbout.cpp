@@ -49,7 +49,7 @@
 
 #define ABOUT_CLASS_NAME L"SUMATRA_PDF_ABOUT"
 
-#define ABOUT_WIN_TITLE _TR("About SumatraPDF")
+#define ABOUT_WIN_TITLE _TR("About SumatraPDF (Saylor mod)")
 
 #define SUMATRA_TXT_FONT L"Arial Black"
 #define SUMATRA_TXT_FONT_SIZE 24

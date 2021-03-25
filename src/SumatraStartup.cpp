@@ -35,6 +35,7 @@
 #include "Annotation.h"
 #include "EngineBase.h"
 #include "EngineCreate.h"
+#include "EngineMulti.h"
 #include "DisplayMode.h"
 #include "SettingsStructs.h"
 #include "Controller.h"
@@ -251,6 +252,13 @@ static void OpenUsingDde(HWND targetWnd, const WCHAR* filePath, Flags& i, bool i
 static WindowInfo* LoadOnStartup(const WCHAR* filePath, const Flags& i, bool isFirstWin) {
     LoadArgs args(filePath, nullptr);
     args.showWin = !(i.printDialog && i.exitWhenDone) && !gPluginMode;
+
+    // check if directory
+    if (GetFileAttributes(filePath) & FILE_ATTRIBUTE_DIRECTORY) {
+        EngineBase* engine = CreateEngineMultiFromDirectory(filePath);
+        args.engine = engine;
+    }
+
     WindowInfo* win = LoadDocument(args);
     if (!win) {
         return win;

@@ -1929,7 +1929,28 @@ int EnginePdf::GetPageByLabel(const WCHAR* label) const {
     }
 
     if (!pageNo) {
-        return EngineBase::GetPageByLabel(label);
+        // evaluate the simple infix + expression
+        int result = 0;
+        std::vector<WCHAR> buff;
+        for (; *label; ++label) {
+            if (*label >= '0' && *label <= '9')
+                buff.push_back(*label);
+            else {
+                buff.push_back(0);
+                int operand = _wtoi(buff.data());
+                if (*label == '+')
+                    result += operand;
+                else {
+                    MessageBox(0, L"Supported operators are + only, and only on positive numbers. No parenthesis.",
+                               L"Error Operator", 0);
+                    return 0;
+                }
+                buff.clear();
+            }
+        }
+        buff.push_back(0);
+        result += _wtoi(buff.data());
+        return result;
     }
 
     return pageNo;

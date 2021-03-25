@@ -1068,7 +1068,7 @@ static void UpdateUiForCurrentTab(WindowInfo* win) {
     UpdateCurrentTabBgColor(win);
 
     bool onlyNumbers = !win->ctrl || !win->ctrl->HasPageLabels();
-    SetWindowStyle(win->hwndPageBox, ES_NUMBER, onlyNumbers);
+    SetWindowStyle(win->hwndPageBox, ES_NUMBER, false);
 }
 
 static bool showTocByDefault(const WCHAR* path) {
@@ -2921,10 +2921,16 @@ static void OnDuplicateInNewWindow(WindowInfo* win) {
 
     // TODO: should copy the display state from current file
     LoadArgs args(path, newWin);
-    args.fileName = tab->filePath;
+    if (strcmp(((DisplayModel*)win->ctrl)->engineType, "enginePdfMulti") == 0) {
+        EngineBase* engine = CreateEngineMultiFromDirectory(path);
+        args.engine = engine;
+    } else {
+        args.fileName = tab->filePath;
+    }
     args.showWin = true;
     args.noPlaceWindow = true;
-    LoadDocument(args);
+    WindowInfo* new_win = LoadDocument(args);
+    new_win->ctrl->GoToPage(win->ctrl->CurrentPageNo(), false);
 }
 
 // TODO: similar to Installer.cpp
