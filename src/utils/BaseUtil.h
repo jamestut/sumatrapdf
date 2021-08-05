@@ -133,6 +133,7 @@
 #include <vector>
 #include <limits>
 #include <span>
+#include <atomic>
 //#include <iostream>
 //#include <locale>
 
