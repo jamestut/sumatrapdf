@@ -73,7 +73,8 @@ bool Load() {
     CrashIf(gGlobalPrefs);
 
     AutoFreeWstr path = GetSettingsPath();
-    AutoFree prefsData = file::ReadFile(path.Get());
+    // disable loading preferences
+    AutoFree prefsData = {};
 
     gGlobalPrefs = NewGlobalPrefs(prefsData.data);
     CrashAlwaysIf(!gGlobalPrefs);
@@ -187,6 +188,7 @@ static void RememberSessionState() {
 // added or removed from gFileHistory (in order to keep
 // the list of recently opened documents in sync)
 bool Save() {
+    return true;
     // don't save preferences without the proper permission
     if (!HasPermission(Perm_SavePreferences)) {
         return false;

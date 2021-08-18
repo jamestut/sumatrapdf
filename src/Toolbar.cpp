@@ -57,7 +57,7 @@ struct ToolbarButtonInfo {
 };
 
 static ToolbarButtonInfo gToolbarButtons[] = {
-    {0, CmdOpen, _TRN("Open"), MF_REQ_DISK_ACCESS},
+    // {0, CmdOpen, _TRN("Open"), MF_REQ_DISK_ACCESS},
     // the Open button is replaced with a Save As button in Plugin mode:
     //  { 12,  IDM_SAVEAS,            _TRN("Save As"),        MF_REQ_DISK_ACCESS },
     {1, CmdPrint, _TRN("Print"), MF_REQ_PRINTER_ACCESS},

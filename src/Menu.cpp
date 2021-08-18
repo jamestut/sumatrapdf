@@ -90,38 +90,38 @@ void MenuUpdateDisplayMode(WindowInfo* win) {
 // clang-format off
 //[ ACCESSKEY_GROUP File Menu
 static MenuDef menuDefFile[] = {
-    { _TRN("New &window\tCtrl+N"),          CmdNewWindow,              MF_REQ_DISK_ACCESS },
-    { _TRN("&Open &document in new window\tCtrl+Shift+N"),          CmdDuplicateInNewWindow,              MF_REQ_DISK_ACCESS },
-    { _TRN("&Open...\tCtrl+O"),             CmdOpen,                   MF_REQ_DISK_ACCESS },
-    { "Open Folder",                        CmdOpenFolder,             MF_REQ_DISK_ACCESS },
-    { _TRN("&Close\tCtrl+W"),               CmdClose,                  MF_REQ_DISK_ACCESS },
-    { _TRN("Show in &folder"),              CmdShowInFolder,           MF_REQ_DISK_ACCESS },
-    { _TRN("&Save As...\tCtrl+S"),          CmdSaveAs,                 MF_REQ_DISK_ACCESS },
-    { _TRN("Save Annotations"),             CmdSaveAnnotations,        MF_REQ_DISK_ACCESS },
+    // { _TRN("New &window\tCtrl+N"),          CmdNewWindow,              MF_REQ_DISK_ACCESS },
+    // { _TRN("&Open &document in new window\tCtrl+Shift+N"),          CmdDuplicateInNewWindow,              MF_REQ_DISK_ACCESS },
+    // { _TRN("&Open...\tCtrl+O"),             CmdOpen,                   MF_REQ_DISK_ACCESS },
+    // { "Open Folder",                        CmdOpenFolder,             MF_REQ_DISK_ACCESS },
+    // { _TRN("&Close\tCtrl+W"),               CmdClose,                  MF_REQ_DISK_ACCESS },
+    // { _TRN("Show in &folder"),              CmdShowInFolder,           MF_REQ_DISK_ACCESS },
+    // { _TRN("&Save As...\tCtrl+S"),          CmdSaveAs,                 MF_REQ_DISK_ACCESS },
+    // { _TRN("Save Annotations"),             CmdSaveAnnotations,        MF_REQ_DISK_ACCESS },
  //[ ACCESSKEY_ALTERNATIVE // only one of these two will be shown
 #ifdef ENABLE_SAVE_SHORTCUT
-    { _TRN("Save S&hortcut...\tCtrl+Shift+S"), Cmd::SaveAsBookmark,    MF_REQ_DISK_ACCESS | MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Save S&hortcut...\tCtrl+Shift+S"), Cmd::SaveAsBookmark,    MF_REQ_DISK_ACCESS | MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
 //| ACCESSKEY_ALTERNATIVE
 #else
-    { _TRN("Re&name...\tF2"),               CmdRenameFile,             MF_REQ_DISK_ACCESS },
+    // { _TRN("Re&name...\tF2"),               CmdRenameFile,             MF_REQ_DISK_ACCESS },
 #endif
 //] ACCESSKEY_ALTERNATIVE
     { _TRN("&Print...\tCtrl+P"),            CmdPrint,                  MF_REQ_PRINTER_ACCESS | MF_NOT_FOR_EBOOK_UI },
     { SEP_ITEM,                             0,                         MF_REQ_DISK_ACCESS },
 //[ ACCESSKEY_ALTERNATIVE // PDF/XPS/CHM specific items are dynamically removed in RebuildFileMenu
-    { _TRN("Open in &Adobe Reader"),        CmdOpenWithAcrobat,        MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
-    { _TRN("Open in &Foxit Reader"),        CmdOpenWithFoxIt,          MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
-    { _TRN("Open &in PDF-XChange"),         CmdOpenWithPdfXchange,     MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Open in &Adobe Reader"),        CmdOpenWithAcrobat,        MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Open in &Foxit Reader"),        CmdOpenWithFoxIt,          MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Open &in PDF-XChange"),         CmdOpenWithPdfXchange,     MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
 //| ACCESSKEY_ALTERNATIVE
-    { _TRN("Open in &Microsoft XPS-Viewer"),CmdOpenWithXpsViewer,      MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Open in &Microsoft XPS-Viewer"),CmdOpenWithXpsViewer,      MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
 //| ACCESSKEY_ALTERNATIVE
-    { _TRN("Open in &Microsoft HTML Help"), CmdOpenWithHtmlHelp,       MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Open in &Microsoft HTML Help"), CmdOpenWithHtmlHelp,       MF_REQ_DISK_ACCESS | MF_NOT_FOR_EBOOK_UI },
 //] ACCESSKEY_ALTERNATIVE
     // further entries are added if specified in gGlobalPrefs.vecCommandLine
-    { _TRN("Send by &E-mail..."),           CmdSendByEmail,            MF_REQ_DISK_ACCESS },
-    { SEP_ITEM,                             0,                         MF_REQ_DISK_ACCESS },
-    { _TRN("P&roperties\tCtrl+D"),          CmdProperties,             0 },
-    { SEP_ITEM,                             0,                         0 },
+    // { _TRN("Send by &E-mail..."),           CmdSendByEmail,            MF_REQ_DISK_ACCESS },
+    // { SEP_ITEM,                             0,                         MF_REQ_DISK_ACCESS },
+    // { _TRN("P&roperties\tCtrl+D"),          CmdProperties,             0 },
+    // { SEP_ITEM,                             0,                         0 },
     { _TRN("E&xit\tCtrl+Q"),                CmdExit,                   0 },
     { 0, 0, 0 },
 };
@@ -134,17 +134,17 @@ static MenuDef menuDefView[] = {
     { _TRN("&Book View\tCtrl+8"),           CmdViewBook,              MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
     { _TRN("Show &Pages Continuously"),     CmdViewContinuous,        MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
     // TODO: "&Inverse Reading Direction" (since some Mangas might be read left-to-right)?
-    { _TRN("Man&ga Mode"),                  CmdViewMangaMode,         MF_CBX_ONLY },
+    // { _TRN("Man&ga Mode"),                  CmdViewMangaMode,         MF_CBX_ONLY },
     { SEP_ITEM,                             0,                        MF_NOT_FOR_CHM },
     { _TRN("Rotate &Left\tCtrl+Shift+-"),   CmdViewRotateLeft,        MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
     { _TRN("Rotate &Right\tCtrl+Shift++"),  CmdViewRotateRight,       MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
     { SEP_ITEM,                             0,                        MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
-    { _TRN("Pr&esentation\tF5"),            CmdViewPresentationMode,  MF_REQ_FULLSCREEN | MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
-    { _TRN("F&ullscreen\tF11"),             CmdViewFullScreen,        MF_REQ_FULLSCREEN },
+    // { _TRN("Pr&esentation\tF5"),            CmdViewPresentationMode,  MF_REQ_FULLSCREEN | MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("F&ullscreen\tF11"),             CmdViewFullScreen,        MF_REQ_FULLSCREEN },
     { SEP_ITEM,                             0,                        MF_REQ_FULLSCREEN },
-    { _TRN("Show Book&marks\tF12"),         CmdViewBookmarks,         0 },
-    { _TRN("Show &Toolbar\tF8"),            CmdViewShowHideToolbar,   MF_NOT_FOR_EBOOK_UI },
-    { _TRN("Show Scr&ollbars"),             CmdViewShowHideScrollbars,MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Show Book&marks\tF12"),         CmdViewBookmarks,         0 },
+    // { _TRN("Show &Toolbar\tF8"),            CmdViewShowHideToolbar,   MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Show Scr&ollbars"),             CmdViewShowHideScrollbars,MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
     { SEP_ITEM,                             0,                        MF_REQ_ALLOW_COPY | MF_NOT_FOR_EBOOK_UI },
     { _TRN("Select &All\tCtrl+A"),          CmdSelectAll,             MF_REQ_ALLOW_COPY | MF_NOT_FOR_EBOOK_UI },
     { _TRN("&Copy Selection\tCtrl+C"),      CmdCopySelection,         MF_REQ_ALLOW_COPY | MF_NOT_FOR_EBOOK_UI },
@@ -254,20 +254,20 @@ static MenuDef menuDefContext[] = {
     // note: strings cannot be "" or else items are not there
     {"add",                                 CmdFavoriteAdd,           MF_NO_TRANSLATE   },
     {"del",                                 CmdFavoriteDel,           MF_NO_TRANSLATE   },
-    { _TRN("Show &Favorites"),              CmdFavoriteToggle,        0                 },
-    { _TRN("Show &Bookmarks\tF12"),         CmdViewBookmarks,         0                 },
-    { _TRN("Show &Toolbar\tF8"),            CmdViewShowHideToolbar,   MF_NOT_FOR_EBOOK_UI },
-    { _TRN("Show &Scrollbars"),             CmdViewShowHideScrollbars,MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
-    { _TRN("Save Annotations"),             CmdSaveAnnotations,       MF_REQ_DISK_ACCESS },
+    // { _TRN("Show &Favorites"),              CmdFavoriteToggle,        0                 },
+    // { _TRN("Show &Bookmarks\tF12"),         CmdViewBookmarks,         0                 },
+    // { _TRN("Show &Toolbar\tF8"),            CmdViewShowHideToolbar,   MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Show &Scrollbars"),             CmdViewShowHideScrollbars,MF_NOT_FOR_CHM | MF_NOT_FOR_EBOOK_UI },
+    // { _TRN("Save Annotations"),             CmdSaveAnnotations,       MF_REQ_DISK_ACCESS },
 #if 0
     {"New Bookmarks",                       CmdNewBookmarks,          MF_NO_TRANSLATE },
 #endif
-    { _TRN("Edit Annotations"),             CmdEditAnnotations,       MF_REQ_DISK_ACCESS },
+    //{ _TRN("Edit Annotations"),             CmdEditAnnotations,       MF_REQ_DISK_ACCESS },
     { SEP_ITEM,                             0,                        MF_PLUGIN_MODE_ONLY | MF_REQ_ALLOW_COPY },
-    { _TRN("&Save As..."),                  CmdSaveAs,                MF_PLUGIN_MODE_ONLY | MF_REQ_DISK_ACCESS },
+    //{ _TRN("&Save As..."),                  CmdSaveAs,                MF_PLUGIN_MODE_ONLY | MF_REQ_DISK_ACCESS },
     { _TRN("&Print..."),                    CmdPrint,                 MF_PLUGIN_MODE_ONLY | MF_REQ_PRINTER_ACCESS },
-    { _TRN("P&roperties"),                  CmdProperties,            MF_PLUGIN_MODE_ONLY },
-    { _TRN("E&xit Fullscreen"),             CmdExitFullScreen,        0 },
+    // { _TRN("P&roperties"),                  CmdProperties,            MF_PLUGIN_MODE_ONLY },
+    // { _TRN("E&xit Fullscreen"),             CmdExitFullScreen,        0 },
     { 0, 0, 0 },
 };
 //] ACCESSKEY_GROUP Context Menu (Content)
@@ -732,7 +732,7 @@ void OnWindowContextMenu(WindowInfo* win, int x, int y) {
         }
     }
 
-    bool showCreateAnnotations = ShouldShowCreateAnnotationMenu(tab, x, y);
+    bool showCreateAnnotations = false;
     if (showCreateAnnotations) {
         MenuDef* mdef = menuDefCreateAnnot;
         if (gIsRaMicroBuild) {
@@ -799,7 +799,7 @@ void OnWindowContextMenu(WindowInfo* win, int x, int y) {
     win::menu::SetEnabled(popup, CmdSaveAnnotations, enableSaveAnnotations);
 
     const WCHAR* filePath = win->ctrl->FilePath();
-    if (pageNo > 0) {
+    if (false) {
         AutoFreeWstr pageLabel = win->ctrl->GetPageLabel(pageNo);
         bool isBookmarked = gFavorites.IsPageInFavorites(filePath, pageNo);
         if (isBookmarked) {
@@ -1297,7 +1297,7 @@ HMENU BuildMenu(WindowInfo* win) {
         // because they wouldn't be persisted, anyway
         m = BuildMenuFromMenuDef(menuDefFavorites, CreateMenu());
         RebuildFavMenu(win, m);
-        AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("F&avorites"));
+        // AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("F&avorites"));
     }
 
     m = BuildMenuFromMenuDef(menuDefSettings, CreateMenu(), filter);
@@ -1316,14 +1316,14 @@ HMENU BuildMenu(WindowInfo* win) {
     HMENU m2 = BuildMenuFromMenuDef(menuDefTheme, CreateMenu(), filter);
     AppendMenu(m, MF_POPUP | MF_STRING, (UINT_PTR)m2, _TR("&Theme"));
 #endif
-    AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("&Settings"));
+    // AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("&Settings"));
 
     m = BuildMenuFromMenuDef(menuDefHelp, CreateMenu(), filter);
-    AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("&Help"));
+    // AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("&Help"));
 #if 0
     // see MenuBarAsPopupMenu in Caption.cpp
     m = GetSystemMenu(win->hwndFrame, FALSE);
-    AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("&Window"));
+    // AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, _TR("&Window"));
 #endif
 
     if (gShowDebugMenu) {
@@ -1341,7 +1341,7 @@ HMENU BuildMenu(WindowInfo* win) {
             AppendMenuA(m, MF_STRING, (UINT_PTR)CmdDebugCrashMe, "Crash me");
         }
 
-        AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, L"Debug");
+        // AppendMenu(mainMenu, MF_POPUP | MF_STRING, (UINT_PTR)m, L"Debug");
     }
 
     MarkMenuOwnerDraw(mainMenu);
