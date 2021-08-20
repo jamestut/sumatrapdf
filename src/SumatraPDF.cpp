@@ -2200,7 +2200,7 @@ void UpdateFixedPageScrollbarsVisibility() {
     RerenderFixedPage();
 }
 
-static void OnMenuExit() {
+void OnMenuExit() {
     if (gPluginMode) {
         return;
     }

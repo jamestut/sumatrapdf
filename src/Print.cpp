@@ -34,6 +34,8 @@
 #include "SumatraProperties.h"
 #include "Translations.h"
 
+void OnMenuExit();
+
 struct PrintData {
     AutoFreeWstr printerName;
     ScopedMem<DEVMODEW> devMode;
@@ -503,6 +505,7 @@ void OnMenuPrint(WindowInfo* win, bool waitForCompletion) {
         }
     }
 
+    bool printSuccess = false;
     bool printSelection = false;
     Vec<PRINTPAGERANGE> ranges;
     PRINTER_INFO_2W printerInfo{};
@@ -660,15 +663,17 @@ void OnMenuPrint(WindowInfo* win, bool waitForCompletion) {
         data->engine = dm->GetEngine();
     }
 
-    if (!waitForCompletion && !failedEngineClone) {
-        PrintToDeviceOnThread(win, data);
+    printSuccess = PrintToDevice(*data);
+    if (!printSuccess) {
+        MessageBox(0, L"Printing failed or cancelled.", L"Print Failed", 0);
     } else {
-        PrintToDevice(*data);
-        if (failedEngineClone) {
-            data->engine = nullptr;
-        }
-        delete data;
+        OnMenuExit();
     }
+    
+    if (failedEngineClone) {
+        data->engine = nullptr;
+    }
+    delete data;
 
 Exit:
     free(ppr);
