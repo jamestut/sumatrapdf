@@ -493,7 +493,7 @@ enum { MAXPAGERANGES = 10 };
 void OnMenuPrint(WindowInfo* win, bool waitForCompletion) {
     // we remember some printer settings per process
     static ScopedMem<DEVMODE> defaultDevMode;
-    static PrintScaleAdv defaultScaleAdv = PrintScaleAdv::Shrink;
+    static PrintScaleAdv defaultScaleAdv = PrintScaleAdv::None;
 
     static bool hasDefaults = false;
     if (!hasDefaults) {
